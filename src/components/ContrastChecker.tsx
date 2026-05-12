@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";  // ✅ + useEffect
+import React, { useState, useEffect } from "react";
 import "./../styles/ContrastChecker.scss";
 
 const ContrastChecker: React.FC = () => {
   const [bgColor, setBgColor] = useState<string>('#b4bcff');
-  const [randomHue, setRandomHue] = useState<number>(0); // ✅ NUEVO estado
+  const [randomHue, setRandomHue] = useState<number>(0);
 
-  // ✅ NUEVA función (mismas fórmulas que ColorHarmonizer)
   const getHarmonies = (h: number) => [
     { type: 'Base',          val: `hsl(${h}, 70%, 50%)` },
     { type: 'Complementario',val: `hsl(${(h + 180) % 360}, 70%, 50%)` },
@@ -13,12 +12,12 @@ const ContrastChecker: React.FC = () => {
     { type: 'Triada B',      val: `hsl(${(h + 240) % 360}, 70%, 50%)` },
   ];
 
-  // ✅ NUEVO: cambia el hue random cada 1 segundo
+
   useEffect(() => {
     const interval = setInterval(() => {
       setRandomHue(Math.floor(Math.random() * 360));
     }, 1000);
-    return () => clearInterval(interval); // limpieza al desmontar
+    return () => clearInterval(interval); 
   }, []);
 
   return (
@@ -35,7 +34,7 @@ const ContrastChecker: React.FC = () => {
         <p style={{ color: '#000000' }}>Texto Negro</p>
       </div>
 
-      {/* ✅ NUEVO: Objeto 2D con colores armónicos aleatorios */}
+      {/*Cubo aleatorio*/}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: '240px', height: '240px', margin: '1rem auto' }}>
         {getHarmonies(randomHue).map((c) => (
           <div
