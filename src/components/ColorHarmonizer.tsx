@@ -29,7 +29,7 @@ const ColorHarmonizer: React.FC = () => {
         ))}
       </div>
 
-      {/* ✅ NUEVO: Objeto 2D — cuadrado dividido en 4 cuadrantes */}
+      {/*Cuadrado*/}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: '240px', height: '240px', margin: '1rem auto' }}>
         {getHarmonies(hue).map((c) => (
           <div
